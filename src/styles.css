@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Ionic styles */
+@import '@ionic/angular/css/core.css';
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/display.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+ion-content {
+  --background: #000000;
+  --color: #ffffff;
+  --overflow: auto;
+  --overflow-x: hidden;
+  --overflow-y: auto;
+}
+
+ion-content .inner-scroll {
+  overflow-y: auto !important;
+}
+
+ion-toolbar {
+  --background: #000000;
+  --color: #ffffff;
+  --border-color: #1a1a1a;
+}
+
+ion-title {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+ion-button {
+  --background: #e50914;
+  --color: #ffffff;
+  --border-radius: 30px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

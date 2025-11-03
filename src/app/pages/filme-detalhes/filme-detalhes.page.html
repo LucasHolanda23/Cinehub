@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalhes do Filme</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (movie) {
+    <div class="detail-container">
+      <div class="hero-section">
+        <div class="poster-large">
+          <span>{{ movie.title | slice:0:2 }}</span>
+        </div>
+        <div class="hero-info">
+          <h1>{{ movie.title | capitalize }}</h1>
+          <div class="meta-info">
+            <span class="year">{{ movie.year }}</span>
+            <span class="rating-large">⭐ {{ movie.rating }}/10</span>
+            <span class="duration">{{ movie.duration }}</span>
+          </div>
+          <p class="genre-large">{{ movie.genre | uppercase }}</p>
+          <p class="director">Diretor: {{ movie.director }}</p>
+        </div>
+      </div>
+
+      <div class="description-section">
+        <h2>Sinopse</h2>
+        <p>{{ movie.description }}</p>
+      </div>
+
+      <div class="actions">
+        <ion-button routerLink="/filmes" fill="outline" class="back-btn">
+          ← Voltar para Filmes
+        </ion-button>
+        <ion-button routerLink="/" fill="outline" class="home-btn">
+          Ir para Home
+        </ion-button>
+      </div>
+    </div>
+  } @else {
+    <div class="loading">
+      <p>Carregando...</p>
+    </div>
+  }
+
+  <div class="footer">
+    <p>&copy; 2024 CineHub - Todos os direitos reservados</p>
+  </div>
+</ion-content>
+
