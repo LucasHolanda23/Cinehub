@@ -4,7 +4,9 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { HoverHighlightDirective } from '../../directives/hover-highlight.directive';
-import { HttpClient } from '@angular/common/http'; 
+import { OmdbService } from '../../omdb.service';
+
+
 
 @Component({
   selector: 'app-filmes',
@@ -12,9 +14,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./filmes.page.css'],
   standalone: true,
   imports: [IonicModule, RouterLink, CommonModule, CapitalizePipe, HoverHighlightDirective]
+  
+
 })
 export class FilmesPage {
-  constructor(private http: HttpClient) {} 
+  
+
+  constructor(private omdbService: OmdbService) {} 
+
   movies = [
     {
       id: 1,
@@ -118,21 +125,15 @@ export class FilmesPage {
 popularMovies = this.movies.filter(m => m.rating >= 8.8);
   allMovies = this.movies;
 
-FilmesDaAPI() {
-  const apikey = 'a5bacd94'; 
-  const title = 'Inception';
-  const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apikey}`;
-
-
-  this.http.get(url).subscribe({
-    next: (response: any) => { 
-      console.log('Dados do filme:', Response);
-  },
-  error: (err) => {
-    console.error('Erro ao buscar o filme:', err);
-  }
-   
-  });
- }
+BuscarFilme() {
+  const title = 'Inception'; // Exemplo de título de filme
+  this.omdbService.buscarFilmePorTitulo(title).subscribe({
+    next: (response: any) => {
+      console.log('Dados do filme:', response);
+    },
+    error: (error: any) => {
+      console.error('Erro ao buscar o filme (via Service):', error);
+    }
+  })
 }
-
+}
