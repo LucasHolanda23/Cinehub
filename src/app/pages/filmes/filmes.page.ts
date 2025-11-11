@@ -19,7 +19,6 @@ import { OmdbService } from '../../omdb.service';
 })
 export class FilmesPage {
   
-
   constructor(private omdbService: OmdbService) {} 
 
   movies = [
@@ -126,7 +125,7 @@ popularMovies = this.movies.filter(m => m.rating >= 8.8);
   allMovies = this.movies;
 
 BuscarFilme() {
-  const title = 'Inception'; // Exemplo de título de filme
+  const title = 'Inception'; 
   this.omdbService.buscarFilmePorTitulo(title).subscribe({
     next: (response: any) => {
       console.log('Dados do filme:', response);

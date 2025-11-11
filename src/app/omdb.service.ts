@@ -14,6 +14,8 @@ export class OmdbService {
 
   buscarFilmePorTitulo(title: string): Observable<any> {
     const url = `${this.BASE_URL}?t=${encodeURIComponent(title)}&apikey=${this.API_KEY}`;
+    console.log('URL da reuisição OMDB: ', url); 
     return this.http.get(url);
   }
 }
+
