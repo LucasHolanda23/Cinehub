@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -17,8 +17,8 @@ import { OmdbService } from '../../omdb.service';
   
 
 })
-export class FilmesPage {
-  
+export class FilmesPage implements OnInit {
+
   constructor(private omdbService: OmdbService) {} 
 
   movies = [
@@ -123,6 +123,12 @@ export class FilmesPage {
 
 popularMovies = this.movies.filter(m => m.rating >= 8.8);
   allMovies = this.movies;
+
+  
+  ngOnInit() {
+    console.log('FilmesPage carregada');
+    this.BuscarFilme(); 
+  }
 
 BuscarFilme() {
   const title = 'Inception'; 
