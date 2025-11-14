@@ -5,27 +5,35 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   @if (movie) {
+
     <div class="detail-container">
+
       <div class="hero-section">
+
         <div class="poster-large">
-          <span>{{ movie.title | slice:0:2 }}</span>
+          <img *ngIf="movie.Poster !== 'N/A'" [src]="movie.Poster" alt="Poster">
         </div>
+
         <div class="hero-info">
-          <h1>{{ movie.title | capitalize }}</h1>
+          <h1>{{ movie.Title }}</h1>
+
           <div class="meta-info">
-            <span class="year">{{ movie.year }}</span>
-            <span class="rating-large">⭐ {{ movie.rating }}/10</span>
-            <span class="duration">{{ movie.duration }}</span>
+            <span class="year">{{ movie.Year }}</span>
+            <span class="rating-large">⭐ {{ movie.imdbRating }}/10</span>
+            <span class="duration">{{ movie.Runtime }}</span>
           </div>
-          <p class="genre-large">{{ movie.genre | uppercase }}</p>
-          <p class="director">Diretor: {{ movie.director }}</p>
+
+          <p class="genre-large">{{ movie.Genre }}</p>
+          <p class="director"><strong>Diretor:</strong> {{ movie.Director }}</p>
         </div>
+
       </div>
 
       <div class="description-section">
         <h2>Sinopse</h2>
-        <p>{{ movie.description }}</p>
+        <p>{{ movie.Plot }}</p>
       </div>
 
       <div class="actions">
@@ -36,15 +44,19 @@
           Ir para Home
         </ion-button>
       </div>
+
     </div>
+
   } @else {
+
     <div class="loading">
-      <p>Carregando...</p>
+      <p>Carregando informações...</p>
     </div>
+
   }
 
   <div class="footer">
     <p>&copy; 2025 CineHub - Todos os direitos reservados</p>
   </div>
-</ion-content>
 
+</ion-content>

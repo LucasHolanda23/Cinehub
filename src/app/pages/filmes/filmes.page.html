@@ -11,22 +11,37 @@
 <ion-content [scrollY]="true" [scrollX]="false" class="movies-content">
   <div class="section">
     <h2 class="section-title">Filmes</h2>
+
     <div class="movies-grid">
-      @for (movie of allMovies; track movie.id) {
-        <div class="movie-card" appHoverHighlight [routerLink]="['/filme', movie.id]">
-          <div class="poster-placeholder">
-            <span>{{ movie.title | slice:0:2 }}</span>
+
+      @for (movie of allMovies; track movie.title) {
+
+        <div class="movie-card" appHoverHighlight [routerLink]="['/filme', movie.title]">
+
+          <div class="poster-container">
+
+            
+            <img *ngIf="movie['poster'] && movie['poster'] !== 'N/A'"
+                 [src]="movie['poster']"
+                 alt="{{ movie['title'] }}"
+                 class="poster-img">
+
+          
+            <div *ngIf="!movie['poster'] || movie['poster'] === 'N/A'"
+                 class="poster-placeholder">
+              <span>{{ movie['title'] | slice:0:2 }}</span>
+            </div>
+
           </div>
+
           <div class="movie-info-card">
-            <h3>{{ movie.title | capitalize }}</h3>
-            <p class="year-rating">
-              <span>{{ movie.year }}</span>
-              <span class="rating">⭐ {{ movie.rating }}/10</span>
-            </p>
-            <p class="genre">{{ movie.genre }}</p>
+            <h3>{{ movie['title'] }}</h3>
           </div>
+
         </div>
+
       }
+
     </div>
   </div>
 
@@ -34,4 +49,3 @@
     <p>&copy; 2025 CineHub - Todos os direitos reservados</p>
   </div>
 </ion-content>
-
