@@ -1,11 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button routerLink="/" fill="clear">
-        ← Voltar
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar class="cabecalho2">
+
+      <div class="cabecalho">
+        <div class="botao_logo">
+          <ion-buttons slot="start" class="botao_voltar">
+        <ion-button routerLink="/" fill="clear">
+          <img src="/ch.png" alt="logo_cinehub" class="imagem_voltar">
+        </ion-button>
+      </ion-buttons>    
+        </div>
+
+        <div class="barraSearch">
+           <input class="home_barra" placeholder="O que você quer assistir hoje?" type="search">
+        </div>
+      </div>
+    </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [scrollY]="true" [scrollX]="false" class="movies-content">
